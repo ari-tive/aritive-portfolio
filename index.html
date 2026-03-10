@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+
+<html lang="en" class="scroll-smooth"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>aritive's works | home</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&amp;family=Playfair+Display:ital,wght@0,400;0,700;1,400&amp;family=Syne:wght@400;600;700&amp;family=Bebas+Neue&amp;family=Righteous&amp;family=Press+Start+2P&amp;display=swap" rel="stylesheet"/>
+
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#00a8a8",
+                        "background-light": "#ffffff",
+                        "background-dark": "#000000",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk"]
+                    },
+                },
+            },
+        }
+    </script>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
+</head>
+<body id="home" class="font-display text-slate-900 selection:bg-primary/30">
+    <div class="relative min-h-screen w-full flex flex-col overflow-x-hidden">
+        <!-- Navigation -->
+        <header id="main-nav" class="fixed top-0 left-0 right-0 z-50 flex items-center justify-center px-6 py-6" style="transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);">
+            <nav class="glass flex items-center justify-between w-full max-w-5xl px-8 py-3">
+<div class="flex items-center gap-2 group cursor-pointer" onclick="window.scrollTo(0,0)">
+<div class="size-8 bg-primary border-2 border-black flex items-center justify-center text-black">
+<span class="material-symbols-outlined text-lg font-bold">terminal</span>
+</div>
+<span class="text-black text-xl font-bold tracking-tight">aritive's works</span>
+</div>
+<div class="hidden md:flex items-center gap-10">
+<a class="text-sm font-bold text-black hover:text-primary transition-colors" href="#home">Home</a>
+<a class="text-sm font-bold text-black hover:text-primary transition-colors" href="#about">About</a>
+<a class="text-sm font-bold text-black hover:text-primary transition-colors" href="#services">Services</a>
+</div>
+<div class="flex items-center gap-4">
+    <button onclick="toggleTheme()" class="size-10 bg-white border-2 border-black hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_#000] text-black flex items-center justify-center transition-all">
+        <span id="theme-icon" class="material-symbols-outlined text-xl">dark_mode</span>
+    </button>
+    <a href="contacts.html" class="w-32 bg-primary border-2 border-black hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_#000] text-black py-2 text-sm font-bold transition-all inline-block text-center">
+        Contact Me
+    </a>
+</div>
+</nav>
+        </header>
+        <main class="flex-1 flex flex-col items-center pt-32 pb-20 px-6 space-y-32">
+            <!-- Hero Section -->
+            <section class="w-full max-w-4xl flex flex-col items-center">
+<div class="glass glow-accent p-10 md:p-16 flex flex-col items-center text-center space-y-8 relative overflow-hidden">
+<!-- Subtle background light -->
+<div class="absolute -top-24 -right-24 size-48 bg-primary/20 blur-[80px] rounded-full"></div>
+<div class="absolute -bottom-24 -left-24 size-48 bg-primary/20 blur-[80px] rounded-full"></div>
+<div class="relative cursor-pointer hover:-translate-y-1 transition-transform group" onclick="document.getElementById('pfp-modal').classList.remove('hidden'); setTimeout(() => document.getElementById('pfp-modal-content').classList.remove('scale-95', 'opacity-0'), 10);">
+<div class="size-32 overflow-hidden border-4 border-black p-1 bg-white shadow-[4px_4px_0px_0px_#00a8a8] group-hover:shadow-[6px_6px_0px_0px_#000] transition-shadow">
+<img class="w-full h-full object-cover transition-all" data-alt="Profile Picture" src="https://i.ibb.co/RGc7yH5T/carrr.png"/>
+</div>
+<div class="absolute -bottom-2 -right-2 size-6 bg-primary border-2 border-black flex items-center justify-center">
+<div class="size-2 bg-black rounded-full animate-pulse"></div>
+</div>
+</div>
+<div class="space-y-4 max-w-2xl">
+<h1 class="text-4xl md:text-6xl font-bold text-black tracking-tight leading-tight uppercase">
+                            Freelance <span class="text-primary" style="text-shadow: 2px 2px 0px #000;">web-dev</span>
+</h1>
+<p class="text-slate-700 font-bold text-lg md:text-xl h-16 md:h-10" id="typewriter-text">
+                        </p>
+</div>
+
+</div>
+</section>
+            <!-- About Section -->
+            <section class="w-full max-w-5xl scroll-mt-32" id="about">
+<div class="grid md:grid-cols-2 gap-12 items-center">
+<div class="space-y-6">
+<div class="inline-flex items-center gap-2 px-3 py-1 glass text-black text-xs font-bold uppercase tracking-widest">
+<span class="size-1.5 bg-primary border border-black"></span>
+                            Background
+                        </div>
+<h2 class="text-3xl md:text-4xl font-bold text-black uppercase">About me...</h2>
+<div class="space-y-4 text-slate-800 font-medium leading-relaxed text-lg">
+<p>
+                                I’m a web developer who enjoys creating clean, modern, and visually appealing websites. I focus on combining creativity with solid design principles to build websites that look premium and perform well.
+                            </p>
+<p>
+                                Alongside web development, I also work with Minecraft server development — creating optimized server setups and custom systems that deliver smooth and enjoyable gameplay experiences.
+                            </p>
+</div>
+</div>
+<div class="glass p-2 rotate-2 hover:rotate-0 transition-transform duration-500">
+<div class="aspect-video w-full overflow-hidden border-2 border-black">
+<img class="w-full h-full object-cover transition-all" data-alt="Abstract futuristic digital workspace with glowing accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBc2CqaGlFcDo3zrt68Aonz52euYx5z5iOu0OsSyyWnnuV8kbJtgBZnHVh0kjidj2840T52Z1QlrnrFEaRT18OHWbhsAX5Zg3WJ_3foI2myi00c9dLBbqKE9xZ7d9aTzwFBu0EE9LGFKYBrlS4w4B49-A8vkZRJCDHkP9hiM0lPf3p5QE3JBeQonloTs5GYuWq3PTw_xNIrqM0cz36U2M4MlErY6BxjPZ2dosjtHoTNFt6FfuB2-ZN25Toyi6ECNrO3QuMBDxBAmg"/>
+</div>
+</div>
+</div>
+</section>
+            <!-- Services Section -->
+            <section class="w-full max-w-6xl space-y-12 scroll-mt-32" id="services">
+                <div class="text-center space-y-4">
+<h2 class="text-3xl md:text-5xl font-bold text-black uppercase">Core Services</h2>
+<p class="text-slate-700 font-bold max-w-xl mx-auto">I am specialized in</p>
+</div>
+<div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+<!-- Card 1 -->
+<div class="glass glass-hover p-8 space-y-6 transition-all duration-300">
+<div class="size-14 border-2 border-black bg-primary flex items-center justify-center text-black">
+<span class="material-symbols-outlined text-3xl">language</span>
+</div>
+<div class="space-y-3">
+<h3 class="text-xl font-bold text-black uppercase">Web Development</h3>
+<p class="text-slate-800 font-medium text-sm leading-relaxed">
+                                I specialize in creating modern, clean, and high-quality websites that combine strong visual design with smooth performance.
+                            </p>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="glass glass-hover p-8 space-y-6 transition-all duration-300">
+<div class="size-14 border-2 border-black bg-primary flex items-center justify-center text-black">
+<span class="material-symbols-outlined text-3xl">sports_esports</span>
+</div>
+<div class="space-y-3">
+<h3 class="text-xl font-bold text-black uppercase">Minecraft Solutions</h3>
+<p class="text-slate-800 font-medium text-sm leading-relaxed">
+                                Minecraft server development, plugin management, server optimization, web-setups.
+                            </p>
+</div>
+</div>
+
+</div>
+</section>
+
+            <!-- Why Work With Me Section -->
+            <section class="w-full max-w-5xl space-y-12">
+<div class="glass glow-accent p-12 md:p-20 relative overflow-hidden">
+<div class="absolute top-0 right-0 p-10 opacity-20">
+<span class="material-symbols-outlined text-[12rem] text-black">verified</span>
+</div>
+<div class="relative z-10 space-y-10">
+<div class="max-w-xl space-y-6">
+<h2 class="text-4xl md:text-5xl font-bold text-black leading-tight uppercase">Why Choose <span class="text-primary">Me?</span></h2>
+</div>
+<ol class="space-y-4 text-slate-800 font-bold text-lg list-decimal list-outside max-w-3xl pt-8 ml-6">
+<li class="pl-2">
+<span>I build modern websites tailored to your specific requirements.</span>
+</li>
+<li class="pl-2">
+<span>I maintain a collaborative workflow so we can work closely throughout the project.</span>
+</li>
+<li class="pl-2">
+<span>All feedback and requests are carefully considered, and I’m happy to explain any part of the process.</span>
+</li>
+<li class="pl-2">
+<span>I have experience developing multiple websites, and you can review examples of my work.</span>
+</li>
+<li class="pl-2">
+<span>I work efficiently and can typically deliver completed projects within a week depending on scope.</span>
+</li>
+<li class="pl-2">
+<span>Post-launch support is always included — I’m available to help if any issues arise.</span>
+</li>
+</ol>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full border-t-[3px] border-black py-12 px-6 flex flex-col items-center bg-white">
+<div class="w-full max-w-5xl flex flex-col items-center gap-8">
+<div class="flex items-center gap-2">
+<div class="size-6 bg-primary border-2 border-black flex items-center justify-center text-black">
+<span class="material-symbols-outlined text-sm font-bold">terminal</span>
+</div>
+<span class="text-black font-bold tracking-tight text-lg">aritive's works</span>
+</div>
+<div class="w-full flex justify-center">
+    <a href="https://github.com/ari-tive" target="_blank" class="glass glass-hover px-6 py-3 border-2 border-black text-black font-bold text-sm inline-flex items-center gap-2 group">
+        GitHub
+        <span class="material-symbols-outlined text-lg group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">arrow_outward</span>
+    </a>
+</div>
+<p class="text-slate-800 font-bold text-sm text-center">© 2026 aritive's works. All rights reserved.</p>
+</div>
+</footer>
+</div>
+    <!-- End of main content area -->
+    
+    <!-- PFP Modal -->
+    <div id="pfp-modal" class="fixed inset-0 z-[100] flex items-center justify-center hidden">
+        <div class="absolute inset-0 bg-white/80 backdrop-blur-sm cursor-pointer" onclick="closePfpModal()"></div>
+        <div id="pfp-modal-content" class="relative p-8 max-w-[400px] w-full mx-4 transition-all duration-300 scale-95 opacity-0 bg-primary/20 backdrop-blur-none border-[3px] border-black shadow-[8px_8px_0px_0px_#000]">
+            <button onclick="closePfpModal()" class="absolute -top-4 -right-4 size-10 bg-white border-2 border-black text-black font-bold flex items-center justify-center hover:bg-black hover:text-white transition-colors shadow-[4px_4px_0px_0px_#000]">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+            <div class="size-32 overflow-hidden border-4 border-black p-1 bg-white shadow-[4px_4px_0px_0px_#00a8a8] mx-auto mb-6">
+                <img class="w-full h-full object-cover" src="https://i.ibb.co/RGc7yH5T/carrr.png" />
+            </div>
+            <p class="text-black font-bold text-lg leading-relaxed text-center">
+                Hello! I’m Aritive. It’s the name I use online instead of my real name for privacy. <br/><br/>
+                I’m a web developer focused on creating modern, premium-quality websites.
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>

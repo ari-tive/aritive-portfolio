@@ -1,0 +1,64 @@
+.glass {
+    background: #ffffff;
+    border: 3px solid #000000;
+    box-shadow: 6px 6px 0px 0px #000000;
+    border-radius: 0;
+    transition: all 0.2s ease-in-out;
+}
+.glass-hover:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 10px 10px 0px 0px #00a8a8;
+}
+.glow-accent {
+    box-shadow: 8px 8px 0px 0px #000000;
+}
+body {
+    background-color: #ffffff;
+    /* Create a subtle wavy effect by mixing two repeating radial gradients */
+    background-image: 
+        repeating-radial-gradient(circle at 0 0, transparent 0, #ffffff 40px),
+        repeating-linear-gradient(#00aaaa15, #00aaaa15);
+    background-size: 80px 80px, 100% 100%;
+}
+
+/* Dark mode overrides */
+.dark body {
+    background-color: #000000;
+    background-image: 
+        repeating-radial-gradient(circle at 0 0, transparent 0, #000000 40px),
+        repeating-linear-gradient(#00aaaa25, #00aaaa25);
+}
+
+.dark .glass {
+    background: #111111;
+    border-color: #00a8a8;
+    box-shadow: 6px 6px 0px 0px #00a8a8;
+}
+.dark .glass-hover:hover {
+    box-shadow: 10px 10px 0px 0px #ffffff;
+    border-color: #ffffff;
+}
+.dark .glow-accent {
+    box-shadow: 8px 8px 0px 0px #00a8a8;
+}
+
+.dark .text-black { color: #ffffff; }
+.dark .bg-white { background-color: #111111; }
+.dark .border-black { border-color: #00a8a8; }
+.dark .shadow-\[4px_4px_0px_0px_\#000\] { box-shadow: 4px 4px 0px 0px #00a8a8; }
+.dark .shadow-\[6px_6px_0px_0px_\#000\] { box-shadow: 6px 6px 0px 0px #00a8a8; }
+.dark .shadow-\[8px_8px_0px_0px_\#000\] { box-shadow: 8px 8px 0px 0px #00a8a8; }
+.dark .hover\:shadow-\[4px_4px_0px_0px_\#000\]:hover { box-shadow: 4px 4px 0px 0px #00a8a8; }
+.dark .hover\:shadow-\[6px_6px_0px_0px_\#000\]:hover { box-shadow: 6px 6px 0px 0px #00a8a8; }
+.dark .hover\:bg-black:hover { background-color: #00a8a8; color: #000000; }
+.dark .bg-primary\.text-black { color: #000000 !important; } /* Keep primary buttons with black text */
+.dark .text-slate-700, .dark .text-slate-800, .dark .text-slate-900 { color: #d1d5db; }
+.dark .border-t-\[3px\] { border-color: #00a8a8; }
+.dark .bg-white\/80 { background-color: rgba(0,0,0,0.8); }
+
+.glow-text {
+    text-shadow: 2px 2px 0px #000;
+}
+.dark .glow-text {
+    text-shadow: 2px 2px 0px #00a8a8;
+}

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>aritive's works | contacts</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&amp;family=Playfair+Display:ital,wght@0,400;0,700;1,400&amp;family=Syne:wght@400;600;700&amp;family=Bebas+Neue&amp;family=Righteous&amp;family=Press+Start+2P&amp;display=swap" rel="stylesheet"/>
+
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#00a8a8",
+                        "background-light": "#ffffff",
+                        "background-dark": "#000000",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk"]
+                    },
+                },
+            },
+        }
+    </script>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
+</head>
+<body id="home" class="font-display text-slate-900 selection:bg-primary/30">
+    <div class="relative min-h-screen w-full flex flex-col overflow-x-hidden">
+        <!-- Navigation -->
+        <header id="main-nav" class="fixed top-0 left-0 right-0 z-50 flex items-center justify-center px-6 py-6" style="transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);">
+            <nav class="glass flex items-center justify-between w-full max-w-5xl px-8 py-3">
+                <div class="flex items-center gap-2 group cursor-pointer" onclick="window.location.href='index.html'">
+                    <div class="size-8 bg-primary border-2 border-black flex items-center justify-center text-black">
+                        <span class="material-symbols-outlined text-lg font-bold">terminal</span>
+                    </div>
+                    <span class="text-black text-xl font-bold tracking-tight">aritive's works</span>
+                </div>
+                <div class="hidden md:flex items-center gap-10">
+                    <a class="text-sm font-bold text-black hover:text-primary transition-colors" href="index.html#home">Home</a>
+                    <a class="text-sm font-bold text-black hover:text-primary transition-colors" href="index.html#about">About</a>
+                    <a class="text-sm font-bold text-black hover:text-primary transition-colors" href="index.html#services">Services</a>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button onclick="toggleTheme()" class="size-10 bg-white border-2 border-black hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_#000] text-black flex items-center justify-center transition-all">
+                        <span id="theme-icon" class="material-symbols-outlined text-xl">dark_mode</span>
+                    </button>
+                    <a href="index.html" class="w-32 bg-primary bg-primary.text-black border-2 border-black hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_#000] text-black py-2 text-sm font-bold transition-all text-center inline-block">
+                        Go Back
+                    </a>
+                </div>
+            </nav>
+        </header>
+
+        <main class="flex-1 flex flex-col items-center pt-32 pb-20 px-6 space-y-16 max-w-6xl mx-auto w-full">
+            <section class="glass p-10 md:p-16 text-center relative overflow-hidden w-full max-w-5xl glow-accent">
+                <div class="absolute -top-24 -left-24 size-48 bg-primary/20 blur-[80px] rounded-full"></div>
+                <div class="absolute -bottom-24 -right-24 size-48 bg-primary/20 blur-[80px] rounded-full"></div>
+                <div class="relative z-10">
+                    <span class="inline-block py-1 px-3 border-2 border-black bg-primary text-black text-xs font-bold tracking-widest uppercase mb-6 shadow-[4px_4px_0px_0px_#000] animate-pulse">Available for work</span>
+                    <h1 class="text-5xl md:text-7xl font-bold text-black mb-6 tracking-tight uppercase">
+                        Let's <span class="text-primary glow-text">Connect</span>
+                    </h1>
+                    <p class="text-slate-700 font-bold text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+                        I'm always open to discussing new projects, creative ideas, or opportunities to be part of your digital visions.
+                    </p>
+                </div>
+            </section>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-5xl scroll-mt-32" id="contact-cards">
+                <div class="glass glass-hover p-8 group transition-all duration-300 cursor-pointer" onclick="openContactModal('Email', 'nv2008223@gmail.com', 'For Important talks. contact me on email.', 'copy', 'nv2008223@gmail.com')">
+                    <div class="size-14 border-2 border-black bg-primary flex items-center justify-center text-black mb-6">
+                        <span class="material-symbols-outlined text-3xl">alternate_email</span>
+                    </div>
+                    <h3 class="text-black font-bold uppercase tracking-wider mb-2">Email</h3>
+                    <p class="text-slate-800 font-medium group-hover:text-primary transition-colors">nv2008223@gmail.com</p>
+                </div>
+                <div id="discord-card" class="glass glass-hover p-8 group transition-all duration-300 cursor-pointer" onclick="openContactModal('Discord', 'ari.tive', 'If you wish to have a chat with me, consult me, then leave a message to me on discord.', 'copy', 'ari.tive')">
+                    <div class="size-14 border-2 border-black bg-primary flex items-center justify-center text-black mb-6">
+                        <span class="material-symbols-outlined text-3xl">forum</span>
+                    </div>
+                    <h3 class="text-black font-bold uppercase tracking-wider mb-2">Discord</h3>
+                    <p class="text-slate-800 font-medium group-hover:text-primary transition-colors">ari.tive</p>
+                </div>
+                <div class="glass glass-hover p-8 group transition-all duration-300 cursor-pointer" onclick="openContactModal('Location', 'Mumbai, India', 'I have not put my exact location for privacy purposes.', 'link', 'https://www.google.com/maps/place/Mumbai,+Maharashtra')">
+                    <div class="size-14 border-2 border-black bg-primary flex items-center justify-center text-black mb-6">
+                        <span class="material-symbols-outlined text-3xl">location_on</span>
+                    </div>
+                    <h3 class="text-black font-bold uppercase tracking-wider mb-2">Location</h3>
+                    <p class="text-slate-800 font-medium group-hover:text-primary transition-colors">Mumbai, India</p>
+                </div>
+            </div>
+
+            <!-- Social Networks section removed as requested -->
+
+            <section class="glass glow-accent p-8 md:p-12 relative overflow-hidden w-full max-w-5xl">
+                <div class="flex flex-col lg:flex-row items-center justify-between gap-10">
+                    <div class="max-w-xl text-center lg:text-left">
+                        <h2 class="text-3xl font-bold mb-4 text-black uppercase">Start a <span class="text-primary">Collaboration</span></h2>
+                        <p class="text-slate-800 font-medium leading-relaxed">
+                            Interested in working together? I'm currently taking on new projects and would love to hear about what you're building. Let's make something amazing.
+                        </p>
+                    </div>
+                    <div class="flex sm:flex-row gap-4 w-full sm:w-auto mt-6 lg:mt-0 justify-center">
+                        <button onclick="scrollToCards()" class="p-4 bg-primary text-black border-2 border-black flex items-center justify-center hover:-translate-y-2 transition-all shadow-[4px_4px_0px_0px_#000] hover:shadow-[6px_6px_0px_0px_#000]">
+                            <span class="material-symbols-outlined text-4xl animate-bounce">arrow_upward</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="w-full border-t-[3px] border-black py-12 px-6 flex flex-col items-center bg-white mt-auto">
+            <div class="w-full max-w-5xl flex flex-col items-center gap-8">
+                <div class="flex items-center gap-2">
+                    <div class="size-6 bg-primary border-2 border-black flex items-center justify-center text-black">
+                        <span class="material-symbols-outlined text-sm font-bold">terminal</span>
+                    </div>
+                    <span class="text-black font-bold tracking-tight text-lg">aritive's works</span>
+                </div>
+                
+                <div class="w-full flex justify-center">
+                    <a href="https://github.com/ari-tive" target="_blank" class="glass glass-hover px-6 py-3 border-2 border-black text-black font-bold text-sm inline-flex items-center gap-2 group">
+                        GitHub
+                        <span class="material-symbols-outlined text-lg group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">arrow_outward</span>
+                    </a>
+                </div>
+                
+                <p class="text-slate-800 font-bold text-sm text-center">© 2026 aritive's works. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Contact Modal -->
+    <div id="contact-modal" class="fixed inset-0 z-[100] flex items-center justify-center hidden">
+        <div class="absolute inset-0 bg-white/80 backdrop-blur-sm cursor-pointer" onclick="closeContactModal()"></div>
+        <div id="contact-modal-content" class="relative p-8 max-w-[500px] w-full mx-4 transition-all duration-300 scale-95 opacity-0 bg-primary/20 backdrop-blur-none border-[3px] border-black shadow-[8px_8px_0px_0px_#000]">
+            <button onclick="closeContactModal()" class="absolute -top-4 -right-4 size-10 bg-white border-2 border-black text-black font-bold flex items-center justify-center hover:bg-black hover:text-white transition-colors shadow-[4px_4px_0px_0px_#000] dark:shadow-[#00a8a8]">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+            <h2 id="modal-title" class="text-3xl font-bold text-black uppercase mb-2">Title</h2>
+            <p id="modal-subtitle" class="text-black font-bold text-xl mb-6 truncate"></p>
+            <div class="bg-white border-2 border-black p-4 mb-6 relative shadow-[4px_4px_0px_0px_#00a8a8]">
+                 <p id="modal-info" class="text-slate-800 font-medium leading-relaxed"></p>
+            </div>
+            <a id="modal-link" href="#" target="_blank" class="w-full bg-primary bg-primary.text-black border-2 border-black hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_#000] dark:hover:shadow-[#00a8a8] text-black px-5 py-3 text-lg font-bold transition-all flex items-center justify-center gap-2">
+                <span id="modal-btn-text">Go to link</span> <span id="modal-btn-icon" class="material-symbols-outlined text-lg">arrow_outward</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- End of main content area -->
+</body>
+</html>
