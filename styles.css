@@ -64,3 +64,18 @@ body {
 .dark .glow-text {
     text-shadow: 2px 2px 0px #00a8a8;
 }
+
+/* Greeting Animation Stabilization */
+.greeting-container {
+    display: inline-block;
+    min-width: 120px;
+    text-align: left;
+}
+
+@media (min-width: 768px) {
+    .greeting-container {
+        display: inline;
+        min-width: 0;
+        text-align: inherit;
+    }
+}
