@@ -57,6 +57,50 @@ document.addEventListener("DOMContentLoaded", () => {
         typeWriter(phrases[currentLine]);
     }
 
+    // Greeting Word Cycle Animation
+    const greetingEl = document.getElementById('greeting-text');
+    if (greetingEl) {
+        const greetings = ['HELLO', 'HOLA', 'こんにちは', 'привет', '你好'];
+        let greetingIndex = 0;
+        const scrambleChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*';
+
+        async function animateGreeting() {
+            while (true) {
+                const currentWord = greetings[greetingIndex];
+                
+                // Display current word for a while
+                await new Promise(r => setTimeout(r, 2500));
+                
+                // Delete animation (erase character by character)
+                for (let i = currentWord.length; i >= 0; i--) {
+                    greetingEl.textContent = currentWord.substring(0, i);
+                    await new Promise(r => setTimeout(r, 60));
+                }
+                
+                await new Promise(r => setTimeout(r, 300));
+                
+                // Move to next greeting
+                greetingIndex = (greetingIndex + 1) % greetings.length;
+                const nextWord = greetings[greetingIndex];
+                
+                // Type animation (type character by character with scramble)
+                let result = '';
+                for (let i = 0; i < nextWord.length; i++) {
+                    // Show a random character briefly
+                    let randomChar = scrambleChars[Math.floor(Math.random() * scrambleChars.length)];
+                    greetingEl.textContent = result + randomChar;
+                    await new Promise(r => setTimeout(r, 40));
+                    // Then show the actual character
+                    result += nextWord[i];
+                    greetingEl.textContent = result;
+                    await new Promise(r => setTimeout(r, 80));
+                }
+            }
+        }
+        
+        animateGreeting();
+    }
+
     // Navbar Auto-Hide Logic
     const nav = document.getElementById('main-nav');
     if (nav) {

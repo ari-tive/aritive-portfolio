@@ -50,6 +50,8 @@ body {
 .dark .shadow-\[8px_8px_0px_0px_\#000\] { box-shadow: 8px 8px 0px 0px #00a8a8; }
 .dark .hover\:shadow-\[4px_4px_0px_0px_\#000\]:hover { box-shadow: 4px 4px 0px 0px #00a8a8; }
 .dark .hover\:shadow-\[6px_6px_0px_0px_\#000\]:hover { box-shadow: 6px 6px 0px 0px #00a8a8; }
+.dark .hover\:shadow-\[8px_8px_0px_0px_\#000\]:hover { box-shadow: 8px 8px 0px 0px #00a8a8; }
+.dark .group:hover .group-hover\:shadow-\[6px_6px_0px_0px_\#000\] { box-shadow: 6px 6px 0px 0px #00a8a8; }
 .dark .hover\:bg-black:hover { background-color: #00a8a8; color: #000000; }
 .dark .bg-primary\.text-black { color: #000000 !important; } /* Keep primary buttons with black text */
 .dark .text-slate-700, .dark .text-slate-800, .dark .text-slate-900 { color: #d1d5db; }
