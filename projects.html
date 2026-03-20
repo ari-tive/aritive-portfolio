@@ -120,15 +120,20 @@
       /* Body & Layout */
       body { overflow-x: hidden !important; }
       section, main { padding: 40px 20px !important; }
+      /* do not limit images here except broadly */
       img, iframe { max-width: 100% !important; }
-      .max-w-4xl, .w-full { width: 100% !important; max-width: 100% !important; }
+      .max-w-5xl, .w-full { width: 100% !important; max-width: 100% !important; }
 
-      /* Card Grid */
-      .grid { grid-template-columns: 1fr !important; gap: 1.5rem !important; }
+      /* Project Cards */
+      .projects-card { flex-direction: column !important; padding: 24px !important; gap: 24px !important; }
+      .projects-card > div { width: 100% !important; } /* override 18% and 82% */
+      .projects-card img { max-height: 220px !important; object-fit: cover !important; width: 100% !important; }
     }
     @media (max-width: 768px) {
-      /* Card Grid Stack on tablet */
-      .grid { grid-template-columns: 1fr !important; gap: 1.5rem !important; }
+      /* Project Cards Stack on tablet */
+      .projects-card { flex-direction: column !important; padding: 32px !important; gap: 32px !important; }
+      .projects-card > div { width: 100% !important; }
+      .projects-card img { max-height: 300px !important; object-fit: cover !important; width: 100% !important; }
     }
   </style>
 <!-- END: Layout Specific Styles -->
@@ -145,8 +150,8 @@
 <!-- Nav Links -->
 <div class="hidden md:flex space-x-12 text-xs font-medium uppercase tracking-widest">
 <a class="hover:text-brand-primary transition-custom" href="index.html">Home</a>
-<a class="hover:text-brand-primary transition-custom" href="projects.html">Projects</a>
-<a class="text-brand-primary transition-custom" href="contacts.html">Contact</a>
+<a class="text-brand-primary transition-custom" href="projects.html">Projects</a>
+<a class="hover:text-brand-primary transition-custom" href="contacts.html">Contact</a>
 </div>
 <!-- Mobile Menu Toggle -->
 <div class="md:hidden flex flex-col justify-between w-6 h-[20px] cursor-pointer" id="mobile-menu-btn">
@@ -164,86 +169,65 @@
 </nav>
 <!-- END: Fixed Navigation -->
 
-<main class="flex-1 max-w-4xl mx-auto w-full px-6 pt-32 pb-12 md:pb-20 min-h-screen-custom flex-col justify-center flex">
+<main class="flex-1 max-w-5xl mx-auto w-full px-6 pt-32 pb-12 md:pb-20 min-h-screen-custom">
 <!-- Header Section -->
 <div class="mb-16 text-center md:text-left">
-<h1 class="text-5xl md:text-6xl font-semibold mb-6">Get in touch</h1>
+<h1 class="text-5xl md:text-6xl font-semibold mb-6">Projects</h1>
 <p class="opacity-80 text-lg md:text-xl font-light max-w-2xl leading-relaxed tracking-wide mx-auto md:mx-0">
-    I'm always open to discussing new projects, creative ideas or opportunities to be part of your visions.
+    A curated collection of my recent work and digital experiments, focused on clean aesthetics and functional design.
 </p>
 </div>
 
-<!-- Contact Grid -->
-<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-<!-- Email Card -->
-<div class="flex flex-col justify-center p-8 rounded-theme transition-custom group" style="background-color: rgba(255,255,255,0.85); border: 1px solid rgba(0,0,0,0.08);">
-<div class="flex items-center justify-between mb-4">
-<span class="material-symbols-outlined text-2xl group-hover:text-brand-primary transition-custom">mail</span>
+<!-- Projects List -->
+<div class="flex flex-col gap-12">
+<!-- Project Card: EveMC Network -->
+<div class="group flex flex-col md:flex-row gap-8 p-8 border border-brand-dark/10 rounded-theme" style="background-color: rgba(255,255,255,0.85);">
+<div class="w-full md:w-[18%] aspect-[4/3] shrink-0 overflow-hidden rounded-theme bg-[#111] flex items-center justify-center">
+<img src="https://i.ibb.co/pjV1WyzL/eve3.png" alt="EveMC Network" class="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105" />
 </div>
-<div>
-<h3 class="text-3xl font-semibold mb-4 font-serif group-hover:text-brand-primary transition-custom">Email</h3>
-<p class="text-sm leading-relaxed mb-8 max-w-lg font-light tracking-wide">Drop me a message for collaborations or just to say hi.</p>
-<a class="inline-flex items-center gap-3 border-b border-brand-dark pb-1 text-xs uppercase tracking-[0.2em] font-semibold hover:text-brand-primary hover:border-brand-primary transition-custom w-max cursor-pointer" onclick="navigator.clipboard.writeText('1ari.tive@gmail.com'); var txtEmail = this.childNodes[0]; var oldEmail = txtEmail.textContent.trim(); txtEmail.textContent = 'Copied! '; setTimeout(() => txtEmail.textContent = oldEmail + ' ', 1500);">
-    Copy E-mail <span class="material-symbols-outlined text-sm">arrow_forward</span>
+<div class="flex flex-col justify-center flex-1">
+<div class="flex items-center gap-4 mb-4">
+<span class="text-[10px] font-bold uppercase tracking-widest text-[#166534]">FULL-STACK DEVELOPMENT · 2025</span>
+</div>
+<h3 class="text-3xl font-semibold mb-4 font-serif group-hover:text-brand-primary transition-custom">EveMC Network</h3>
+<p class="text-sm leading-relaxed mb-8 max-w-lg font-light tracking-wide">
+    End-to-end development and management of EveMC — a competitive Minecraft PvP server built for the Asian region. Led the full technical stack including frontend website, backend infrastructure, plugin development, server customization, and overall network architecture. The site serves as the primary storefront for in-game rank purchases.
+</p>
+<a class="inline-flex items-center gap-3 border-b border-brand-dark pb-1 text-xs uppercase tracking-[0.2em] font-semibold hover:text-brand-primary hover:border-brand-primary transition-custom w-max" href="https://www.eve-mc.info/" target="_blank">
+    Visit ➜
 </a>
 </div>
 </div>
 
-<!-- Instagram Card -->
-<div class="flex flex-col justify-center p-8 rounded-theme transition-custom group" style="background-color: rgba(255,255,255,0.85); border: 1px solid rgba(0,0,0,0.08);">
-<div class="flex items-center justify-between mb-4">
-<span class="text-2xl group-hover:text-brand-primary transition-custom">📷</span>
+<!-- Project Card: Cafe Velvet -->
+<div class="group flex flex-col md:flex-row gap-8 p-8 border border-brand-dark/10 rounded-theme" style="background-color: rgba(255,255,255,0.85);">
+<div class="w-full md:w-[18%] aspect-[4/3] shrink-0 overflow-hidden rounded-theme bg-[#d1fae5] flex items-center justify-center">
+<img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUAU2H7XDYSaPBgjDS7nANtSL1snieZ7nqvp83KTDPZVVrACXDEVijQgWXvbVymIqJHKkZ6hGK5IsEiOkP2RTUTKtVv6mzHCooUWjyTXSdS6qJ0xllL6-MqpeobjEw8wF4gWDofy2Rv-MVCzD10rtoAE_x7PHZdBEPlrD0F0ixbDCv3v_LaGsEkbj9kCLU4xYNZsTbZptA6KK7EVnlmiB_70Upyi4TX4kN9AFEJnegqmw2yVGuqwNDeP8jzsFmlRX9Epd9m9rNzA" alt="Cafe Velvet" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
 </div>
-<div>
-<h3 class="text-3xl font-semibold mb-4 font-serif group-hover:text-brand-primary transition-custom">Instagram</h3>
-<p class="text-sm leading-relaxed mb-8 max-w-lg font-light tracking-wide">Follow for the latest updates on my design process.</p>
-<a class="inline-flex items-center gap-3 border-b border-brand-dark pb-1 text-xs uppercase tracking-[0.2em] font-semibold hover:text-brand-primary hover:border-brand-primary transition-custom w-max" href="https://www.instagram.com/n20085528/" target="_blank">
-    Follow <span class="material-symbols-outlined text-sm">arrow_forward</span>
-</a>
+<div class="flex flex-col justify-center flex-1">
+<div class="flex items-center gap-4 mb-4">
+<span class="font-bold uppercase tracking-widest text-[#92400e]" style="font-size: 10px;">WEB DESIGN · 2025</span>
 </div>
-</div>
-
-<!-- Discord Card -->
-<div class="flex flex-col justify-center p-8 rounded-theme transition-custom group" style="background-color: rgba(255,255,255,0.85); border: 1px solid rgba(0,0,0,0.08);">
-<div class="flex items-center justify-between mb-4">
-<span class="material-symbols-outlined text-2xl group-hover:text-brand-primary transition-custom">forum</span>
-</div>
-<div>
-<h3 class="text-3xl font-semibold mb-4 font-serif group-hover:text-brand-primary transition-custom">Discord</h3>
-<p class="text-sm leading-relaxed mb-8 max-w-lg font-light tracking-wide">Join my server for a quick chat or design feedback.</p>
-<a class="inline-flex items-center gap-3 border-b border-brand-dark pb-1 text-xs uppercase tracking-[0.2em] font-semibold hover:text-brand-primary hover:border-brand-primary transition-custom w-max cursor-pointer" onclick="navigator.clipboard.writeText('ari.tive'); var txtDiscord = this.childNodes[0]; var oldDiscord = txtDiscord.textContent.trim(); txtDiscord.textContent = 'Copied! '; setTimeout(() => txtDiscord.textContent = oldDiscord + ' ', 1500);">
-    Copy Discord <span class="material-symbols-outlined text-sm">arrow_forward</span>
-</a>
-</div>
-</div>
-
-<!-- GitHub Card -->
-<div class="flex flex-col justify-center p-8 rounded-theme transition-custom group" style="background-color: rgba(255,255,255,0.85); border: 1px solid rgba(0,0,0,0.08);">
-<div class="flex items-center justify-between mb-4">
-<span class="text-2xl group-hover:text-brand-primary transition-custom">⌨</span>
-</div>
-<div>
-<h3 class="text-3xl font-semibold mb-4 font-serif group-hover:text-brand-primary transition-custom">GitHub</h3>
-<p class="text-sm leading-relaxed mb-8 max-w-lg font-light tracking-wide">Explore my code repositories and open-source contributions.</p>
-<a class="inline-flex items-center gap-3 border-b border-brand-dark pb-1 text-xs uppercase tracking-[0.2em] font-semibold hover:text-brand-primary hover:border-brand-primary transition-custom w-max" href="https://github.com/ari-tive" target="_blank">
-    Connect <span class="material-symbols-outlined text-sm">arrow_forward</span>
+<h3 class="text-3xl font-semibold mb-4 font-serif group-hover:text-brand-primary transition-custom">Cafe Velvet</h3>
+<p class="text-sm leading-relaxed mb-8 max-w-lg font-light tracking-wide">
+    A warm, botanical café website designed to capture the feeling of a calm urban escape. Built for Cafe Velvet — a cozy space centered around greenery, natural light, and healthy flavors. Designed and developed the full site including home, menu, and contact pages with a soft, plant-forward aesthetic.
+</p>
+<a class="inline-flex items-center gap-3 border-b border-brand-dark pb-1 text-xs uppercase tracking-[0.2em] font-semibold hover:text-brand-primary hover:border-brand-primary transition-custom w-max" href="https://cafevelvet.vercel.app/" target="_blank">
+    Visit ➜
 </a>
 </div>
 </div>
 </div>
 
-<!-- Map/Location Section -->
-<div class="w-full h-64 rounded-theme border border-brand-dark/10 overflow-hidden relative">
-  <iframe
-    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d241317.11609823053!2d72.74110090514685!3d19.08219783956064!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c6306644edc1%3A0x5da4ed8f8d648c69!2sMumbai%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin"
-    width="100%"
-    height="100%"
-    style="border:0; filter: grayscale(30%) contrast(1.05);"
-    allowfullscreen=""
-    loading="lazy"
-    referrerpolicy="no-referrer-when-downgrade"
-    title="Mumbai, Maharashtra on Google Maps"
-  ></iframe>
+<!-- Call to Action -->
+<div class="mt-20 py-16 text-center border border-brand-dark/5 rounded-theme" style="background-color: rgba(255,255,255,0.85);">
+<h2 class="text-3xl font-semibold mb-6 font-serif">Have a project in mind?</h2>
+<p class="opacity-80 mb-10 max-w-md mx-auto font-light tracking-wide text-sm">
+    I'm currently available for freelance projects and collaborations. Let's build something amazing together.
+</p>
+<a href="contacts.html" class="inline-block px-10 py-4 border border-brand-dark text-brand-dark text-xs uppercase tracking-[0.3em] font-semibold rounded-theme hover:bg-brand-dark hover:text-brand-cream transition-custom">
+    Start a Conversation
+</a>
 </div>
 </main>
 
