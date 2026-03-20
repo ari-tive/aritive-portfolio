@@ -156,10 +156,10 @@
 </div>
 </div>
 <!-- Mobile Dropdown Menu -->
-<div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 w-full bg-brand-cream border-b border-brand-dark/10 flex-col shadow-sm z-50">
-  <a class="py-4 px-6 border-b border-brand-dark/5 text-xs font-medium uppercase tracking-widest text-brand-dark hover:bg-brand-dark/5 transition-custom" href="index.html">Home</a>
-  <a class="py-4 px-6 border-b border-brand-dark/5 text-xs font-medium uppercase tracking-widest text-brand-dark hover:bg-brand-dark/5 transition-custom" href="projects.html">Projects</a>
-  <a class="py-4 px-6 text-xs font-medium uppercase tracking-widest text-brand-dark hover:bg-brand-dark/5 transition-custom" href="contacts.html">Contact</a>
+<div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 w-full bg-brand-cream border-b border-brand-dark/10 flex-col shadow-sm z-[9998]">
+  <a class="py-4 px-6 border-b border-brand-dark/5 text-xs font-medium uppercase tracking-widest text-brand-dark hover:bg-brand-dark/5 transition-custom w-full block" href="index.html">Home</a>
+  <a class="py-4 px-6 border-b border-brand-dark/5 text-xs font-medium uppercase tracking-widest text-brand-dark hover:bg-brand-dark/5 transition-custom w-full block" href="projects.html">Projects</a>
+  <a class="py-4 px-6 text-xs font-medium uppercase tracking-widest text-brand-dark hover:bg-brand-dark/5 transition-custom w-full block" href="contacts.html">Contact</a>
 </div>
 </nav>
 <!-- END: Fixed Navigation -->
@@ -278,11 +278,7 @@
       spans[2].style.transform = 'none';
     }
   });
-  document.querySelectorAll('#mobile-menu a').forEach(function(a) {
-    a.addEventListener('click', function() {
-      document.getElementById('mobile-menu-btn').click();
-    });
-  });
+  // Links handle their own native click navigation, no need to intercept and prevent target execution.
 </script>
 </body>
 </html>

@@ -163,16 +163,22 @@
       .max-w-3xl, .max-w-4xl, .max-w-5xl, .w-full { width: 100% !important; max-width: 100% !important; }
       
       /* Hero Section */
+      [data-purpose="hero-section"] {
+        padding-top: 24px !important;
+        padding-bottom: 24px !important;
+        min-height: auto !important;
+      }
       [data-purpose="hero-section"] section {
-        width: 90% !important;
+        width: 100% !important;
         margin: 0 auto !important;
-        margin-top: -60px !important;
+        margin-top: 12px !important;
         padding: 24px !important;
       }
       .word-slider-container { white-space: normal !important; min-height: 40px !important; }
       .word-slider { transform: none !important; }
       
       /* About Me */
+      [data-purpose="about-me"] { padding-top: 24px !important; }
       [data-purpose="about-me"] > div { flex-direction: column !important; }
       [data-purpose="about-me"] .md\:w-\[55\%\], [data-purpose="about-me"] .md\:w-\[45\%\] { width: 100% !important; }
       
@@ -214,10 +220,10 @@
 </div>
 </div>
 <!-- Mobile Dropdown Menu -->
-<div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 w-full bg-brand-cream border-b border-brand-dark/10 flex-col shadow-sm z-50">
-  <a class="py-4 px-6 border-b border-brand-dark/5 text-xs font-medium uppercase tracking-widest text-brand-dark hover:bg-brand-dark/5 transition-custom" href="index.html">Home</a>
-  <a class="py-4 px-6 border-b border-brand-dark/5 text-xs font-medium uppercase tracking-widest text-brand-dark hover:bg-brand-dark/5 transition-custom" href="projects.html">Projects</a>
-  <a class="py-4 px-6 text-xs font-medium uppercase tracking-widest text-brand-dark hover:bg-brand-dark/5 transition-custom" href="contacts.html">Contact</a>
+<div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 w-full bg-brand-cream border-b border-brand-dark/10 flex-col shadow-sm z-[9998]">
+  <a class="py-4 px-6 border-b border-brand-dark/5 text-xs font-medium uppercase tracking-widest text-brand-dark hover:bg-brand-dark/5 transition-custom w-full block" href="index.html">Home</a>
+  <a class="py-4 px-6 border-b border-brand-dark/5 text-xs font-medium uppercase tracking-widest text-brand-dark hover:bg-brand-dark/5 transition-custom w-full block" href="projects.html">Projects</a>
+  <a class="py-4 px-6 text-xs font-medium uppercase tracking-widest text-brand-dark hover:bg-brand-dark/5 transition-custom w-full block" href="contacts.html">Contact</a>
 </div>
 </nav>
 <!-- END: Fixed Navigation -->
@@ -464,10 +470,6 @@ document.addEventListener("DOMContentLoaded", () => {
       spans[2].style.transform = 'none';
     }
   });
-  document.querySelectorAll('#mobile-menu a').forEach(function(a) {
-    a.addEventListener('click', function() {
-      document.getElementById('mobile-menu-btn').click();
-    });
-  });
+  // Links handle their own native click navigation, no need to intercept and prevent target execution.
 </script>
 </body></html>
