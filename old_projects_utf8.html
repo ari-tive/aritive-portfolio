@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -11,13 +11,14 @@
 <meta property="og:description" content="Web developer specializing in clean, modern, and high-quality websites." />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:image" content="https://i.ibb.co/v6QKXFZv/46a6dc9ba2e4a6d8649106c357a21bc1.png" />
-<!-- Google Fonts: Manrope for UI and a Serif for headings -->
+<!-- Google Fonts: Manrope for UI and a Serif for headings as requested -->
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet"/>
 <!-- Tailwind CSS v3 with Plugins -->
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <!-- BEGIN: Tailwind Configuration -->
 <script>
     tailwind.config = {
@@ -25,9 +26,9 @@
         extend: {
           colors: {
             brand: {
-              primary: '#ec6d13', // Custom color
-              cream: '#F9F7F2',   // Background
-              dark: '#3D3A35',    // Text/button color
+              primary: '#ec6d13', // Custom color from theme
+              cream: '#F9F7F2',   // Requested background
+              dark: '#3D3A35',    // Requested text/button color
             }
           },
           fontFamily: {
@@ -35,7 +36,7 @@
             serif: ['Playfair Display', 'serif'],
           },
           borderRadius: {
-            'theme': '8px',
+            'theme': '8px', // ROUND_EIGHT from theme
           }
         }
       }
@@ -89,9 +90,11 @@
     .min-h-screen-custom {
       min-height: 100vh;
     }
+    /* Smooth transition for hover states */
     .transition-custom {
       transition: all 0.3s ease-in-out;
     }
+    /* Custom Translucent Scrollbar */
     ::-webkit-scrollbar {
       width: 8px;
     }
@@ -99,28 +102,35 @@
       background: transparent;
     }
     ::-webkit-scrollbar-thumb {
-      background: rgba(61, 58, 53, 0.2);
+      background: rgba(61, 58, 53, 0.2); /* Brand dark with opacity */
       border-radius: 10px;
     }
     ::-webkit-scrollbar-thumb:hover {
       background: rgba(61, 58, 53, 0.4);
     }
     @media (max-width: 420px) {
+      /* Font Scaling */
       h1 { font-size: 36px !important; }
       h2 { font-size: 24px !important; }
       h3 { font-size: 18px !important; }
       p, div, span, li { font-size: 14px; line-height: 1.6; }
       .uppercase.tracking-widest { font-size: 10px !important; }
       a, button { font-size: 13px !important; }
+
+      /* Body & Layout */
       body { overflow-x: hidden !important; }
       section, main { padding: 40px 20px !important; }
+      /* do not limit images here except broadly */
       img, iframe { max-width: 100% !important; }
       .max-w-5xl, .w-full { width: 100% !important; max-width: 100% !important; }
+
+      /* Project Cards */
       .projects-card { flex-direction: column !important; padding: 24px !important; gap: 24px !important; }
-      .projects-card > div { width: 100% !important; }
+      .projects-card > div { width: 100% !important; } /* override 18% and 82% */
       .projects-card img { max-height: 220px !important; object-fit: cover !important; width: 100% !important; }
     }
     @media (max-width: 768px) {
+      /* Project Cards Stack on tablet */
       .projects-card { flex-direction: column !important; padding: 32px !important; gap: 32px !important; }
       .projects-card > div { width: 100% !important; }
       .projects-card img { max-height: 300px !important; object-fit: cover !important; width: 100% !important; }
@@ -131,10 +141,12 @@
 <body class="bg-brand-cream text-brand-dark flex flex-col min-h-screen">
 
 <!-- BEGIN: Fixed Navigation -->
-<nav class="fixed top-0 left-0 w-full z-50 nav-blur border-b border-brand-dark/5" data-purpose="main-navigation">
+<nav class="fixed top-0 left-0 w-full z-50 nav-blur border-b border-brand-dark/5" data-purpose="main-navigation" style="border-bottom: 1px solid rgba(0,0,0,0.12); z-index: 50;">
 <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between relative z-[60]">
 <!-- Logo -->
-<div class="text-sm font-semibold tracking-[0.2em] uppercase" id="logo">aritive</div>
+<div class="text-sm font-semibold tracking-[0.2em] uppercase" id="logo">
+        aritive
+      </div>
 <!-- Nav Links -->
 <div class="hidden md:flex space-x-12 text-xs font-medium uppercase tracking-widest">
 <a class="hover:text-brand-primary transition-custom" href="index.html">Home</a>
@@ -175,14 +187,14 @@
 </div>
 <div class="flex flex-col justify-center flex-1">
 <div class="flex items-center gap-4 mb-4">
-<span class="text-[10px] font-bold uppercase tracking-widest text-[#334155]">DESKTOP APP · 2025</span>
+<span class="text-[10px] font-bold uppercase tracking-widest text-[#334155]">DESKTOP APP ┬╖ 2025</span>
 </div>
 <h3 class="text-3xl font-semibold mb-4 font-serif group-hover:text-brand-primary transition-custom">Ariterminal</h3>
 <p class="text-sm leading-relaxed mb-8 max-w-lg font-light tracking-wide">
     A premium, high-performance terminal UI for Windows built with Python. Features multi-session management, advanced log filtering, and a sleek, developer-centric interface designed for modern workflows.
 </p>
 <a class="inline-flex items-center gap-3 border-b border-brand-dark pb-1 text-xs uppercase tracking-[0.2em] font-semibold hover:text-brand-primary hover:border-brand-primary transition-custom w-max" href="https://github.com/ari-tive/ariterminal" target="_blank">
-    View Source ➜
+    View Source Γ₧£
 </a>
 </div>
 </div>
@@ -194,14 +206,14 @@
 </div>
 <div class="flex flex-col justify-center flex-1">
 <div class="flex items-center gap-4 mb-4">
-<span class="text-[10px] font-bold uppercase tracking-widest text-[#134e4a]">MEDICAL DESIGN · 2025</span>
+<span class="text-[10px] font-bold uppercase tracking-widest text-[#134e4a]">MEDICAL DESIGN ┬╖ 2025</span>
 </div>
 <h3 class="text-3xl font-semibold mb-4 font-serif group-hover:text-brand-primary transition-custom">Smiles Dental</h3>
 <p class="text-sm leading-relaxed mb-8 max-w-lg font-light tracking-wide">
     A modern dental clinic website focusing on professional excellence and patient comfort. Designed for a Marine Drive practice, it features a clinical yet calming aesthetic with a sanctuary-like user experience.
 </p>
 <a class="inline-flex items-center gap-3 border-b border-brand-dark pb-1 text-xs uppercase tracking-[0.2em] font-semibold hover:text-brand-primary hover:border-brand-primary transition-custom w-max" href="https://smilesdental.aritive.info/" target="_blank">
-    Visit ➜
+    Visit Γ₧£
 </a>
 </div>
 </div>
@@ -213,14 +225,14 @@
 </div>
 <div class="flex flex-col justify-center flex-1">
 <div class="flex items-center gap-4 mb-4">
-<span class="text-[10px] font-bold uppercase tracking-widest text-[#7f1d1d]">E-COMMERCE · 2026</span>
+<span class="text-[10px] font-bold uppercase tracking-widest text-[#7f1d1d]">E-COMMERCE ┬╖ 2026</span>
 </div>
 <h3 class="text-3xl font-semibold mb-4 font-serif group-hover:text-brand-primary transition-custom">Iris Bakers</h3>
 <p class="text-sm leading-relaxed mb-8 max-w-lg font-light tracking-wide">
-    Artisanal bakery and pâtisserie specializing in premium handcrafted viennoiserie. The platform emphasizes rich textures and flavors with sophisticated typography and high-quality food photography.
+    Artisanal bakery and p├ótisserie specializing in premium handcrafted viennoiserie. The platform emphasizes rich textures and flavors with sophisticated typography and high-quality food photography.
 </p>
 <a class="inline-flex items-center gap-3 border-b border-brand-dark pb-1 text-xs uppercase tracking-[0.2em] font-semibold hover:text-brand-primary hover:border-brand-primary transition-custom w-max" href="http://irisbakers.aritive.info/" target="_blank">
-    Visit ➜
+    Visit Γ₧£
 </a>
 </div>
 </div>
@@ -232,14 +244,14 @@
 </div>
 <div class="flex flex-col justify-center flex-1">
 <div class="flex items-center gap-4 mb-4">
-<span class="text-[10px] font-bold uppercase tracking-widest text-[#166534]">FULL-STACK DEVELOPMENT · 2025</span>
+<span class="text-[10px] font-bold uppercase tracking-widest text-[#166534]">FULL-STACK DEVELOPMENT ┬╖ 2025</span>
 </div>
 <h3 class="text-3xl font-semibold mb-4 font-serif group-hover:text-brand-primary transition-custom">EveMC Network</h3>
 <p class="text-sm leading-relaxed mb-8 max-w-lg font-light tracking-wide">
-    End-to-end development and management of EveMC — a competitive Minecraft PvP server built for the Asian region. Led the full technical stack including frontend website, backend infrastructure, plugin development, server customization, and network architecture.
+    End-to-end development and management of EveMC ΓÇö a competitive Minecraft PvP server built for the Asian region. Led the full technical stack including frontend website, backend infrastructure, plugin development, server customization, and overall network architecture.
 </p>
 <a class="inline-flex items-center gap-3 border-b border-brand-dark pb-1 text-xs uppercase tracking-[0.2em] font-semibold hover:text-brand-primary hover:border-brand-primary transition-custom w-max" href="https://www.eve-mc.info/" target="_blank">
-    Visit ➜
+    Visit Γ₧£
 </a>
 </div>
 </div>
@@ -251,14 +263,14 @@
 </div>
 <div class="flex flex-col justify-center flex-1">
 <div class="flex items-center gap-4 mb-4">
-<span class="font-bold uppercase tracking-widest text-[#14532d]" style="font-size: 10px;">WEB DESIGN · 2025</span>
+<span class="font-bold uppercase tracking-widest text-[#14532d]" style="font-size: 10px;">WEB DESIGN ┬╖ 2025</span>
 </div>
 <h3 class="text-3xl font-semibold mb-4 font-serif group-hover:text-brand-primary transition-custom">Cafe Velvet</h3>
 <p class="text-sm leading-relaxed mb-8 max-w-lg font-light tracking-wide">
-    A warm, botanical café website designed to capture the feeling of a calm urban escape. Home, menu, and contact pages feature a soft, plant-forward aesthetic and nature-inspired palette.
+    A warm, botanical caf├⌐ website designed to capture the feeling of a calm urban escape. Designed and developed the full site including home, menu, and contact pages with a soft, plant-forward aesthetic and nature-inspired palette.
 </p>
 <a class="inline-flex items-center gap-3 border-b border-brand-dark pb-1 text-xs uppercase tracking-[0.2em] font-semibold hover:text-brand-primary hover:border-brand-primary transition-custom w-max" href="https://cafevelvet.aritive.info/" target="_blank">
-    Visit ➜
+    Visit Γ₧£
 </a>
 </div>
 </div>
@@ -280,7 +292,7 @@
 <footer class="py-12 border-t border-brand-dark/5 text-center mt-auto">
 <div class="max-w-4xl mx-auto px-6 flex flex-col items-center justify-center">
 <p class="text-[10px] uppercase tracking-[0.2em] opacity-40">
-  © 2026 aritive. All rights reserved.
+  ┬⌐ 2026 aritive. All rights reserved.
 </p>
 </div>
 </footer>
@@ -307,6 +319,7 @@
       spans[2].style.transform = 'none';
     }
   });
+  // Links handle their own native click navigation, no need to intercept and prevent target execution.
 </script>
 </body>
 </html>
