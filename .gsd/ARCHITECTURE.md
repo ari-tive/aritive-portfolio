@@ -52,9 +52,14 @@ graph TD
   - **Why Choose Me**: Benefits list with custom iconography.
 
 ### Projects Showcase
-- **Purpose**: Displays a curated collection of work.
+- **Purpose**: Displays a curated collection of recent work including Web Apps, E-commerce, and Full-stack systems.
 - **Location**: `website/projects.html`
-- **Features**: Detailed cards for "EveMC Network" and "Cafe Velvet" with descriptions, tags, and external "Visit" links.
+- **Featured Projects**:
+  - **Ariterminal**: Desktop terminal UI (Python/CustomTkinter).
+  - **Smiles Dental**: Medical clinic landing page (Teal/Slate theme).
+  - **Iris Bakers**: Artisanal bakery pâtisserie (Burgundy/Cream theme).
+  - **EveMC Network**: Minecraft server infrastructure.
+  - **Cafe Velvet**: Botanical urban escape website (Green/Nature theme).
 
 ### Contact Page
 - **Purpose**: Communication channels and location.
