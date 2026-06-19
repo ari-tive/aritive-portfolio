@@ -257,7 +257,6 @@ function createParticle() {
         // Add your new image filenames here when you upload them to the folder!
         const bgImages = [
             '003c3cf805d59e82965abca810edef41.jpg',
-            '14cc8185423cb1e789480a82024fac24.jpg',
             '15185f2a108d57c6bc6fe1a5c879fab0.jpg',
             '254b84bb681b5058bc5543d024d1521a.jpg',
             '2813372a89fff3072b2d73a34dba3673.jpg',
@@ -304,7 +303,6 @@ function createParticle() {
             'download (3).png',
             'download (4).png',
             'download (5).png',
-            'download (6).png',
             'download.jfif',
             'download.png',
             'e4bb438eea253488111a94b373169846.jpg',
@@ -321,6 +319,9 @@ function createParticle() {
         const nextBtn = document.getElementById('next-bg-btn');
 
         let isTransitioning = false;
+        let autoScrollTimer = null;
+        let autoScrollRAF = null;
+        let scrollDirection = 1; // 1 = down, -1 = up
 
         const getRandomSrc = () => {
             if (bgImages.length === 0) return null;
@@ -334,12 +335,173 @@ function createParticle() {
             return bgImages[randomIndex];
         };
 
+        // --- Auto-scroll system ---
+        const SCROLL_SPEED = 0.4; // pixels per frame (~24px/sec at 60fps)
+        const PAUSE_MS = 2500;
+        let isAutoScrolling = false;
+        let rightClickHeld = false;
+        let userInterruptTimer = null;
+        let isPausedAtBoundary = false; // true while waiting at top/bottom edge
+
+        const stopAutoScroll = () => {
+            if (autoScrollTimer) { clearTimeout(autoScrollTimer); autoScrollTimer = null; }
+            if (autoScrollRAF) { cancelAnimationFrame(autoScrollRAF); autoScrollRAF = null; }
+            if (userInterruptTimer) { clearTimeout(userInterruptTimer); userInterruptTimer = null; }
+            isAutoScrolling = false;
+            isPausedAtBoundary = false;
+        };
+
+        const doScrollStep = () => {
+            if (rightClickHeld) {
+                autoScrollRAF = requestAnimationFrame(doScrollStep);
+                return;
+            }
+
+            const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+
+            if (maxScroll <= 0) {
+                autoScrollRAF = requestAnimationFrame(doScrollStep);
+                return;
+            }
+
+            window.scrollBy(0, SCROLL_SPEED * scrollDirection);
+            const afterScroll = window.scrollY;
+
+            if (scrollDirection === 1 && afterScroll >= maxScroll - 1) {
+                // Reached bottom — pause then scroll up
+                scrollDirection = -1;
+                isAutoScrolling = false;
+                isPausedAtBoundary = true;
+                autoScrollTimer = setTimeout(() => {
+                    isPausedAtBoundary = false;
+                    isAutoScrolling = true;
+                    autoScrollRAF = requestAnimationFrame(doScrollStep);
+                }, PAUSE_MS);
+                return;
+            }
+
+            if (scrollDirection === -1 && afterScroll <= 1) {
+                // Reached top — pause then scroll down
+                scrollDirection = 1;
+                isAutoScrolling = false;
+                isPausedAtBoundary = true;
+                autoScrollTimer = setTimeout(() => {
+                    isPausedAtBoundary = false;
+                    isAutoScrolling = true;
+                    autoScrollRAF = requestAnimationFrame(doScrollStep);
+                }, PAUSE_MS);
+                return;
+            }
+
+            autoScrollRAF = requestAnimationFrame(doScrollStep);
+        };
+
+        let isResettingToTop = false;
+
+        const startAutoScroll = () => {
+            stopAutoScroll();
+            scrollDirection = 1;
+
+            const currentPos = window.scrollY;
+            if (currentPos <= 1) {
+                isResettingToTop = false;
+                autoScrollTimer = setTimeout(() => {
+                    isAutoScrolling = true;
+                    autoScrollRAF = requestAnimationFrame(doScrollStep);
+                }, PAUSE_MS);
+                return;
+            }
+
+            isResettingToTop = true;
+            const RESET_SPEED = 3;
+
+            const resetStep = () => {
+                window.scrollBy(0, -RESET_SPEED);
+                if (window.scrollY <= 1) {
+                    window.scrollTo(0, 0);
+                    isResettingToTop = false;
+                    autoScrollTimer = setTimeout(() => {
+                        isAutoScrolling = true;
+                        autoScrollRAF = requestAnimationFrame(doScrollStep);
+                    }, PAUSE_MS);
+                    return;
+                }
+                autoScrollRAF = requestAnimationFrame(resetStep);
+            };
+            autoScrollRAF = requestAnimationFrame(resetStep);
+        };
+
+        const resumeAutoScroll = () => {
+            if (autoScrollTimer) { clearTimeout(autoScrollTimer); autoScrollTimer = null; }
+            if (autoScrollRAF) { cancelAnimationFrame(autoScrollRAF); autoScrollRAF = null; }
+            if (userInterruptTimer) { clearTimeout(userInterruptTimer); userInterruptTimer = null; }
+
+            userInterruptTimer = setTimeout(() => {
+                isAutoScrolling = true;
+                autoScrollRAF = requestAnimationFrame(doScrollStep);
+            }, PAUSE_MS);
+        };
+
+        const pauseForUserAction = () => {
+            if (autoScrollRAF) { cancelAnimationFrame(autoScrollRAF); autoScrollRAF = null; }
+            if (autoScrollTimer) { clearTimeout(autoScrollTimer); autoScrollTimer = null; }
+            isAutoScrolling = false;
+            isPausedAtBoundary = false;
+            resumeAutoScroll();
+        };
+
+        // --- User interaction handlers ---
+
+        window.addEventListener('contextmenu', (e) => e.preventDefault());
+        window.addEventListener('mousedown', (e) => {
+            if (isResettingToTop || isPausedAtBoundary) return;
+            if (e.button === 2) {
+                rightClickHeld = true;
+                if (userInterruptTimer) { clearTimeout(userInterruptTimer); userInterruptTimer = null; }
+            }
+        });
+        window.addEventListener('mouseup', (e) => {
+            if (isResettingToTop || isPausedAtBoundary) return;
+            if (e.button === 2 && rightClickHeld) {
+                rightClickHeld = false;
+                if (!isAutoScrolling && !autoScrollRAF) {
+                    resumeAutoScroll();
+                }
+            }
+        });
+
+        let ignoreScrollEvents = false;
+        window.addEventListener('scroll', () => {
+            if (ignoreScrollEvents || isResettingToTop || isPausedAtBoundary) return;
+            if (isAutoScrolling) {
+                pauseForUserAction();
+            } else if (!autoScrollRAF && !rightClickHeld) {
+                resumeAutoScroll();
+            }
+        }, { passive: true });
+
+        const originalScrollBy = window.scrollBy.bind(window);
+        window.scrollBy = function(x, y) {
+            ignoreScrollEvents = true;
+            originalScrollBy(x, y);
+            requestAnimationFrame(() => { ignoreScrollEvents = false; });
+        };
+
+        // Click: pause and resume after 2.5s
+        window.addEventListener('click', (e) => {
+            if (isResettingToTop) return;
+            if (e.target.closest('#prev-bg-btn') || e.target.closest('#next-bg-btn')) return;
+            pauseForUserAction();
+        });
+
+        // --- Background transition ---
         const transitionBg = (direction) => {
             if (isTransitioning) return;
             const newSrc = getRandomSrc();
             if (!newSrc) return;
 
             isTransitioning = true;
+            stopAutoScroll();
 
             const newImg = document.createElement('img');
             newImg.src = newSrc;
@@ -373,6 +535,8 @@ function createParticle() {
                 bgImg.style.transition = '';
                 newImg.remove();
                 isTransitioning = false;
+                // Reset to top and restart auto-scroll cycle
+                startAutoScroll();
             }, 600);
         };
 
@@ -380,6 +544,9 @@ function createParticle() {
             // Set a random background immediately on load without transition
             const initSrc = getRandomSrc();
             if (initSrc) bgImg.src = initSrc;
+
+            // Start auto-scroll on initial load
+            startAutoScroll();
 
             if (prevBtn && nextBtn) {
                 prevBtn.addEventListener('click', () => transitionBg('prev'));
